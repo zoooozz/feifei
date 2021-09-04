@@ -1,9 +1,5 @@
 <template>
   <div class="wedding-editor" ref="editor">
-    <!--代码编辑区-->
-    <pre>
-      <code v-html="highlightedCode"></code>
-    </pre>
     <!-- 打开邀请函 -->
     <div
       class="editor-open"
@@ -87,33 +83,10 @@ export default {
     },
     // 代码输入
     progressivelyTyping() {
-      return new Promise((resolve) => {
-        let count = 0,
-          typingCount = 0,
-          typing;
-        // 写代码每一帧的函数
-        let step = () => {
-          let randomNumber = Math.round(Math.random() * 6);
-          // 摸你打字的随机速度
-          if (count % 2 === 0 && randomNumber % 4 === 0) {
-            this.currentCode = this.code.substring(0, typingCount);
-            typingCount++;
-          }
-          // 大约每 24 帧光标闪动一次
-          if (count % 24 === 0) {
-            this.isCursorVisible = this.isCursorVisible === 0 ? 1 : 0;
-          }
-          count++;
-          if (typingCount <= this.code.length) {
-            typing = requestAnimationFrame(step);
-          } else {
-            resolve();
-            this.canExecute = true;
-            cancelAnimationFrame(typing);
-          }
-        };
-        typing = requestAnimationFrame(step);
-      });
+      setTimeout(() => {
+        this.canExecute = true;
+        this.$emit("onFinish");
+      }, 500);
     },
     // 发送弹幕之后
     onAfterSending(wish) {
