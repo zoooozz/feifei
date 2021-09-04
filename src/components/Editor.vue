@@ -2,7 +2,7 @@
   <div class="wedding-editor" ref="editor">
     <!-- 打开邀请函 -->
     <iframe
-      src="//player.bilibili.com/player.html?aid=335149131&bvid=BV1aA411c7Gq&cid=401100630&page=1"
+      src="//player.bilibili.com/player.html?aid=207807073&bvid=BV1oh411W7KC&cid=402873261&page=1"
       scrolling="no"
       border="0"
       frameborder="no"
@@ -96,7 +96,7 @@ export default {
       setTimeout(() => {
         this.canExecute = true;
         this.$emit("onFinish");
-      }, 5000);
+      }, 26000);
     },
     // 发送弹幕之后
     onAfterSending(wish) {
