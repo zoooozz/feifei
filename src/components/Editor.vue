@@ -1,6 +1,16 @@
 <template>
   <div class="wedding-editor" ref="editor">
     <!-- 打开邀请函 -->
+    <iframe
+      src="//player.bilibili.com/player.html?aid=335149131&bvid=BV1aA411c7Gq&cid=401100630&page=1"
+      scrolling="no"
+      border="0"
+      frameborder="no"
+      framespacing="0"
+      allowfullscreen="true"
+    >
+    </iframe>
+
     <div
       class="editor-open"
       v-if="(canStart || hasClosed) && !canOpen"
@@ -86,7 +96,7 @@ export default {
       setTimeout(() => {
         this.canExecute = true;
         this.$emit("onFinish");
-      }, 500);
+      }, 5000);
     },
     // 发送弹幕之后
     onAfterSending(wish) {
@@ -101,14 +111,16 @@ export default {
 </script>
 
 <style lang="less">
+iframe {
+  height: 100%;
+  width: 100%;
+}
 .wedding-editor {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  padding: 15px;
-  padding-top: 50px;
   overflow-x: hidden;
   overflow-y: auto;
   z-index: 1;
